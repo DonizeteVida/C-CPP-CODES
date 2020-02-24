@@ -1,7 +1,6 @@
 #include <iostream> 
 using namespace std;
 
-
 class Carro{
     private:
     public:
@@ -9,41 +8,61 @@ class Carro{
         char nome[100];
         char cor[10];
         double preco;
-        Carro* proximo;
+};
 
-}primeiro;
+#define MAX_CARS 10
 
-bool adicionarCarro();
-void mostrarOpcoes(const char* const options[]);
+typedef int (*Predicate)(Carro, Carro);
+
+int porPreco(Carro carro1, Carro carro2){
+    if(carro1.preco == carro2.preco){
+        return 0;
+    }else if(carro1.preco > carro2.preco){
+        return 1;
+    }else{
+        return -1;
+    }
+}
+void comparar(Predicate predicato, Carro carros[]){
+    for(int i = MAX_CARS; i >= 0; i--){
+        for(int j = 0; j < i; j++){
+            Carro actual = carros[j];
+            Carro next = carros[j + 1];
+
+            if(predicato(actual, next)>0){
+                Carro aux = actual;
+                carros[j] = next;
+                carros[j+1] = aux;
+            }
+        }
+    }
+}
 
 int main(int argc, char const *argv[])
 {
-    int selected = 0;
+    Carro carros[MAX_CARS];
+    int i = 0;
+    while(true){
+        cout << "Digite o nome do carro: ";
+        cin >> carros[i].nome;
+        cout << "Digite o preco do carro: ";
+        cin >> carros[i].preco;
 
-    const char* const opcoes[] = {
-        "Adicionar um carro",
-        "Remover um carro",
-        "Editar um carro",
-        "Ler carros",
-        "Sair"
-    };
+        char resp;
 
-    do{
-        mostrarOpcoes(opcoes);
-    }while(selected != 0);
-    
-    return 0;
-}
+        cout << "Deseja continuar?\n <s> SIM\n<n> Não" <<endl;
+        cin >> resp;
 
-bool adicionarCarro(){
+        if(resp != 's'){
+            break;
+        }
+        i++;
+        cout << endl;
+    }
 
-}
+    comparar(&porPreco, carros);
 
-void mostrarOpcoes(const char* const options[]){
-    int index = 0;
-    int total = sizeof(options);
-
-    for(;index < total; index++){
-        cout << options[index] << endl;
+    for(int i = 0; i<MAX_CARS; i++){
+        cout << carros[i].preco <<endl;
     }
 }
