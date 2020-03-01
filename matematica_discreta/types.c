@@ -1,5 +1,25 @@
 #include "types.h"
 
-int add(int num1, int num2){
-    return num1 + num2;
+int not(int value){
+    return !value;
+}
+
+int and(int value1, int value2){
+    return value1 && value2;
+}
+
+int or(int value1, int value2){
+    return value1 || value2;
+}
+
+int xor(int value1, int value2){
+    return value1 ^ value2;
+}
+
+int ifJust(int value1, int value2){
+    return or(not(value1), value2);
+}
+
+int ifJustIf(int value1, int value2){
+    return value1 == value2;
 }

@@ -5,6 +5,7 @@
 
 int main(int argc, char const *argv[])
 {
-    printf("%d", !1);
+    printf("%d", or(1, 0));
+    printf("%d", xor(1, 1));
     return 0;
 }
