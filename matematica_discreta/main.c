@@ -26,13 +26,11 @@ void trueTable(int value1, int value2);
 
 int main(int argc, char const *argv[])
 {
-    void (*pointer)(int, int) = typesFuncPointer[0];
-
     int value1, value2;
 
     for(value1 = 0; value1 <= 1; value1++){
         for(value2 = 0; value2 <= 1; value2++){
-
+            trueTable(value1, value2);
         }
     }
     return 0;
