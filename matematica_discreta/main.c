@@ -3,9 +3,41 @@
 
 #include "types.h"
 
+typedef void (*Type)(int, int);
+
+char* typesDesc[] = {
+    "AND\0", 
+    "OR\0", 
+    "XOR\0",
+    "IFJUST\0", 
+    "IFJUSTIF\0"
+};
+
+//Better than (*typeDesc[])(int, int)
+Type typesFuncPointer[] = {
+    &and, 
+    &or,
+    &xor, 
+    &ifJust,
+    &ifJustIf
+};
+
+void trueTable(int value1, int value2);
+
 int main(int argc, char const *argv[])
 {
-    printf("%d", or(1, 0));
-    printf("%d", xor(1, 1));
+    void (*pointer)(int, int) = typesFuncPointer[0];
+
+    int value1, value2;
+
+    for(value1 = 0; value1 <= 1; value1++){
+        for(value2 = 0; value2 <= 1; value2++){
+
+        }
+    }
     return 0;
+}
+
+void trueTable(int value1, int value2){
+
 }
