@@ -5,6 +5,6 @@
 
 int main(int argc, char const *argv[])
 {
-    printf("%d", add(5, 10));
+    printf("%d", !1);
     return 0;
 }
