@@ -30,25 +30,35 @@ int main(int argc, char const *argv[])
         switch (option)
         {
         case 1:
+            finalResult = not(p);
             break;
         case 2:
+            finalResult = not(q);
             break;
         case 3:
+            finalResult = and(p, q);
             break;
         case 4:
+            finalResult = or (p, q);
             break;
         case 5:
+            finalResult = xor(p, q);
             break;
         case 6:
+            finalResult = ifJust(p, q);
             break;
         case 7:
+            finalResult = ifJustIf(p, q);
             break;
         case 8:
-            break;
+            return 0;
         default:
             system("clear");
             printf("Digite um valor válido.../n");
         }
+
+        system("clear");
+        printf("O resultado é: %d\n", finalResult);
     } while (option != 8);
     return 0;
 }
