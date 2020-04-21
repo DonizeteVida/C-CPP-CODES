@@ -7,7 +7,7 @@ int main(int argc, char const *argv[])
     int option = 0;
     int p = 0, q = 0;
 
-    printf("Digite os valores iniciais aos futuros calculos: \n");
+    printf("Digite os valores iniciais aos futuros calculos ( eles devem ser os valores 0 e 1 ): \n");
     printf("O primeiro valor é p: ");
     scanf("%d", &p);
     printf("Agora digite o valor de q: ");
