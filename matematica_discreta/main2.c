@@ -5,6 +5,14 @@
 int main(int argc, char const *argv[])
 {
     int option = 0;
+    int p = 0, q = 0;
+
+    printf("Digite os valores iniciais aos futuros calculos: \n");
+    printf("O primeiro valor é p: ");
+    scanf("%d", &p);
+    printf("Agora digite o valor de q: \n");
+    scanf("%d", &q);
+    system("cls");
 
     do
     {
