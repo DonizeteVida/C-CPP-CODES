@@ -60,6 +60,7 @@
         "unordered_map": "cpp",
         "utility": "cpp",
         "vector": "cpp",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "types.h": "c"
     }
 }
