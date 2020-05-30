@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 
     for (int i = 0; i < 5; i++)
     {
-        (*(symbols + i))(17);
+        (*(symbols + i))(7);
     }
     return 0;
 }

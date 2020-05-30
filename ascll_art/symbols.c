@@ -84,7 +84,7 @@ void symbol4(int num)
             {
                 printf("/");
             }
-            else if (a >= control3 && a <= control4)
+            else if (a >= control3 && a <= control4 && (a > control1 && a < control2))
             {
                 printf("*");
             }
@@ -108,7 +108,7 @@ void symbol4(int num)
             {
                 printf("\\");
             }
-            else if (a >= control3 && a <= control4)
+            else if (a >= control3 && a <= control4 && (a > control1 && a < control2))
             {
                 printf("*");
             }
