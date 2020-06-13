@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <stdlib.h>
 
 void ex1()
 {
@@ -1232,7 +1233,7 @@ void ex59()
 {
     float salario = 0;
 
-    scanf("%f", salario);
+    scanf("%f", &salario);
     float desconto;
     if (salario <= 600)
     {
@@ -1298,10 +1299,247 @@ void ex61()
 
 void ex62()
 {
+    int idade = 0;
+
+    scanf("%d", &idade);
+
+    char *cat = malloc(sizeof(char) * 100);
+
+    if (idade < 7)
+    {
+        strcpy(cat, "Infantil A\0");
+    }
+    else if (idade < 10)
+    {
+        strcpy(cat, "Infantil B\0");
+    }
+    else if (idade < 13)
+    {
+        strcpy(cat, "Juvenil A\0");
+    }
+    else if (idade < 17)
+    {
+        strcpy(cat, "Juvenil B\0");
+    }
+    else
+    {
+        strcpy(cat, "Senior\0");
+    }
+
+    printf("%s", cat);
+}
+
+void ex63()
+{
+    float a = 0, b = 0, c = 0;
+
+    scanf("%f %f %f", &a, &b, &c);
+
+    float delta = pow(b, 2) - 4 * a * c;
+    float x1 = (-b + sqrt(delta)) / (2 * a);
+    float x2 = (-b - sqrt(delta)) / (2 * a);
+
+    printf("X1: %f X2: %f", x1, x2);
+}
+
+typedef struct
+{
+    int num;
+    char nome[50];
+} Mes;
+
+void ex64()
+{
+    Mes meses[] = {
+        {1, "Janeiro"},
+        {2, "Fevereiro"},
+        {3, "Marco"},
+        {4, "Maio"},
+        {5, "Abril"},
+        {6, "Junho"},
+        {7, "Julho"},
+        {8, "Agosto"},
+        {9, "Setembro"},
+        {10, "Outubro"},
+        {11, "Novembro"},
+        {12, "Dezembro"},
+    };
+    int mes = 0;
+    scanf("%d", &mes);
+
+    for (int i = 1; i <= 12; i++)
+    {
+        if (meses[i - 1].num == mes)
+        {
+            printf("O número %d corresponde ao mes %s", i, meses[i - 1].nome);
+        }
+    }
+}
+
+void ex65()
+{
+    char nome[100];
+    int aptos = 0;
+    int maisV = 0;
+    scanf("%s", nome);
+    scanf("%d", &aptos);
+    scanf("%d", &maisV);
+
+    float r = (float)maisV / (float)aptos;
+    if (aptos > 20000 && r < .5)
+    {
+        printf("Haverá segundo turno");
+    }
+    else
+    {
+        printf("Não haverá segundo turno");
+    }
+}
+
+typedef struct
+{
+    int v1;
+    int v2;
+} IntInt;
+
+void ex66()
+{
+    IntInt values[] = {
+        {500, 0},
+        {1000, 30},
+        {3000, 40},
+    };
+    int sm = 0;
+    scanf("%d", &sm);
+
+    int a = 0;
+    for (int i = 0; i < 3; i++)
+    {
+        if (sm < values[i].v1)
+        {
+            printf("%d", sm * values[i].v2 / 100);
+            a = 1;
+            break;
+        }
+    }
+
+    if (!a)
+    {
+        printf("%d", sm * 50 / 100);
+    }
+}
+
+typedef struct
+{
+    char type;
+    int qtd;
+} TCarro;
+
+void ex67()
+{
+    TCarro cars[] = {
+        {'A', 8},
+        {'B', 9},
+        {'C', 12},
+    };
+
+    int km = 0;
+    char type = '\0';
+
+    scanf("%d", &km);
+    scanf("%c", &type);
+
+    for (int i = 0; i < 3; i++)
+    {
+        if (cars[i].type == type)
+        {
+            printf("O consumo do carro %s foi de %f", type, km / cars[i].qtd);
+        }
+    }
+}
+
+typedef struct
+{
+    char nome[100];
+    int cal;
+} Prato;
+
+void ex68()
+{
+    Prato pratos[] = {
+        {"Vegetariano\0", 180},
+        {"Peixe\0", 230},
+        {"Frango\0", 250},
+        {"Carne\0", 350},
+        {"Abacaxi\0", 75},
+        {"Sorvete\0", 110},
+        {"Mousse\0", 170},
+        {"Mousse chocolate\0", 200},
+        {"Chá\0", 20},
+        {"Suco de laranja\0", 70},
+        {"Suco de melão\0", 100},
+        {"Refrigerante diet\0", 65},
+    };
+    int quantos = 0;
+    printf("Digite quantos pratos voce comeu: ");
+    scanf("%d", &quantos);
+
+    char *nomes[quantos];
+    int cals = 0;
+    for (int i = 0; i < quantos; i++)
+    {
+        printf("Digite o nome do prato");
+        scanf("%s", nomes + i);
+        for (int i = 0; i < quantos; i++)
+        {
+            Prato *p = pratos + i;
+            if (!strcmp(nomes + i, p->nome))
+            {
+                cals += p->cal;
+            }
+        }
+    }
+}
+
+void ex69()
+{
+    double ang = 0;
+
+    scanf("%lf", &ang);
+
+    printf("Seno: %f e cosseno: %f", sin(ang), cos(ang));
+}
+
+void ex70()
+{
+    int x = 0;
+
+    scanf("%d", &x);
+
+    printf("%.2f\n", 8 / (2 - (float)x));
+    printf("%.2f\n", (5 * x + 3) / sqrt(pow(x, 2) - 16));
+    printf("%.2f\n", 10 * x + (2 * x) / pow(x, 2));
+
+    if (x <= 1)
+    {
+        printf("%d", 1);
+    }
+    else if (x <= 2)
+    {
+        printf("%d", 2);
+    }
+    else if (x <= 3)
+    {
+        printf("%d", pow(x, 2));
+    }
+    else
+    {
+        printf("%d", pow(x, 3));
+    }
 }
 
 int main(int argc, char const *argv[])
 {
-    ex58();
+    ex65();
     return 0;
 }
